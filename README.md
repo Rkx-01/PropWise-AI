@@ -168,11 +168,3 @@ Planned enhancements:
 
 ---
 
-## 📜 License
-
-Academic Project – For educational use only.
-
----
-
-⭐ PropWise-AI  
-Smart Decisions. Smarter Investments.
