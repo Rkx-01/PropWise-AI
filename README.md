@@ -127,39 +127,6 @@ streamlit run app.py
 
 ---
 
-## 🎯 Milestone 1 Deliverables
-
-- Classical ML pipeline implementation  
-- Feature engineering & preprocessing  
-- Random Forest regression model  
-- Model evaluation (MAE, RMSE, R²)  
-- Feature importance analysis  
-- Interactive Streamlit deployment  
-
----
-
-## 🚧 Limitations
-
-- External market trends not included  
-- No geospatial modeling  
-- R² indicates room for performance improvement  
-
----
-
-## 🔮 Future Scope (Milestone 2)
-
-Agentic AI Real Estate Advisory System
-
-Planned enhancements:
-
-- Market trend analysis  
-- Retrieval-Augmented Generation (RAG)  
-- Investment recommendations  
-- LLM integration  
-- Comparative property analysis  
-
----
-
 ## 👥 Team Members
 
 - Rounak Kumar Saw  
