@@ -1,6 +1,29 @@
-{
-    "MAE": 1081837.89,
-    "MSE": 2174597032197.15,
-    "RMSE": 1474651.5,
-    "R2": 0.5698
-}
+[
+    {
+        "model": "GradientBoosting",
+        "MAE": 1027982.21,
+        "MSE": 1931191397125.3,
+        "RMSE": 1389673.13,
+        "R2": 0.6179,
+        "tuned": true,
+        "best_params": {
+            "model__learning_rate": 0.05,
+            "model__max_depth": 3,
+            "model__n_estimators": 100
+        }
+    },
+    {
+        "model": "RandomForest",
+        "MAE": 1081837.89,
+        "MSE": 2174597032197.15,
+        "RMSE": 1474651.5,
+        "R2": 0.5698
+    },
+    {
+        "model": "XGBoost",
+        "MAE": 1098398.25,
+        "MSE": 2264313888768.0,
+        "RMSE": 1504763.73,
+        "R2": 0.552
+    }
+]
