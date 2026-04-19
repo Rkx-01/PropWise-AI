@@ -1,137 +1,86 @@
-# 🏠 PropWise-AI  
-## Intelligent Property Price Prediction System
+# 🏠 PropWise AI
 
-PropWise-AI is a machine learning–based real estate analytics application that predicts residential property prices using structured housing data. The system uses a complete Scikit-learn pipeline with feature engineering and Random Forest regression, deployed via an interactive Streamlit web interface.
-
-This project was developed as part of an Introduction to Artificial Intelligence & Machine Learning course (Milestone 1).
-
----
-
-## 🚀 Live Application
-
-🔗 Streamlit App: https://propwise-ai-yr2gt82aogfnwzietyshnq.streamlit.app/ 
-
----
-
-## 📌 Objective
-
-Estimating property prices accurately is challenging due to multiple influencing factors such as area, rooms, amenities, and furnishing status.
-
-The goal of this project is to:
-
-- Predict property prices using classical machine learning  
-- Evaluate model performance  
-- Identify key price-driving factors  
-- Provide a user-friendly web interface  
-
----
-
-## 🧠 System Architecture
-
-User Input → Streamlit UI → Preprocessing Pipeline → Random Forest Model → Price Prediction → Result Display
-
----
-
-## 🛠 Tech Stack
-
-### Machine Learning
-- Python
-- pandas
-- NumPy
-- scikit-learn
-- joblib
-
-### UI & Visualization
-- Streamlit
-- matplotlib
-- seaborn
-
-### Deployment
-- Streamlit Community Cloud
-
----
-
-## 📊 Model Performance
-
-| Metric | Value |
-|--------|-------|
-| MAE | 1,081,837.89 |
-| RMSE | 1,474,651.50 |
-| R² Score | 0.5698 |
-
-The model demonstrates moderate predictive capability and successfully captures key housing price patterns.
+PropWise AI is an advanced, end-to-end Machine Learning web application designed to revolutionize how property evaluations are conducted. By combining cutting-edge predictive algorithms with an Agentic LLM layer (Groq), PropWise AI delivers high-precision market valuations alongside structured, AI-generated real estate advisory reports.
 
 ---
 
 ## ✨ Key Features
 
-### ✅ Single Property Prediction
-Users manually enter property details to receive instant price predictions.
+1. **🚀 High-Precision ML Valuations (`Gradient Boosting` / `XGBoost`)**
+   - PropWise sweeps multiple algorithms (`RandomForest`, `GradientBoosting`, and `XGBoost`) automatically tuning hyperparameters via `GridSearchCV` to deploy the most accurate property valuation model.
+   
+2. **🤖 Agentic AI Advisory Engine (`Groq` / `Llama-3.3-70b`)**
+   - Going beyond simple predictions, PropWise utilizes an integrated LLM to interpret the predicted price and property data, returning a formally structured, cautious advisory report (including market trends, interpretation, and recommended next steps).
 
-### ✅ Batch Prediction
-Upload a CSV file to generate predictions for multiple properties.
-
-### ✅ Model Performance Dashboard
-Displays MAE, RMSE, and R² metrics.
-
-### ✅ Feature Importance Visualization
-Shows top price-driving factors such as:
-- Area
-- Total Rooms
-- Bathrooms
-- Parking
-
-### ✅ Data Explorer
-- Dataset preview
-- Correlation heatmap
-- Price distribution charts
+3. **📊 Interactive Streamlit Dashboard**
+   - **Predict Price:** Instant single-property valuations and Batch-CSV property inference.
+   - **Comparable Properties:** An interactive engine that searches the datastore for the 5 most physically similar properties, predicts their values, and graphs how your property compares to the neighborhood average.
+   - **Model Performance Tracker:** A dedicated observability layer that actively tracks MSE, RMSE, R² scores, and visualizes Feature Importance.
+   
+4. **📄 Automated PDF Export**
+   - Downloads customized, dynamically generated PDF dossiers containing the property snapshot, the Agent's insights, and necessary legal disclaimers natively via `fpdf2`.
 
 ---
 
-## 📂 Project Structure
+## 🏗️ Architecture
 
-propwise-ai/
-
-├── app.py  
-├── analyze_housing.py  
-├── model.pkl  
-├── metrics.json  
-├── feature_importance.csv  
-├── feature_names.joblib  
-├── scaler.joblib  
-├── housing_model.joblib  
-└── requirements.txt  
-
----
-
-## ⚙️ Installation & Local Setup
-
-### Clone Repository
-
-git clone https://github.com/your-username/propwise-ai.git  
-cd propwise-ai  
-
-### Create Virtual Environment
-
-python -m venv venv  
-source venv/bin/activate   (Mac/Linux)  
-venv\Scripts\activate      (Windows)  
-
-### Install Dependencies
-
-pip install -r requirements.txt  
-
-### Run Application
-
-streamlit run app.py  
+```bash
+📦 PropWise-AI
+ ┣ 📂 data                 # Housing.csv dataset
+ ┣ 📜 app.py               # The main Streamlit Front-End 
+ ┣ 📜 agent.py             # Agentic Layer interfacing with Groq API
+ ┣ 📜 analyze_housing.py   # Sklearn/XGBoost Multi-Model Training Engine
+ ┣ 📜 requirements.txt     # Python dependencies
+ ┣ 📜 .env                 # Environment variables (API Keys)
+ ┗ ⚙️ model.pkl            # Pre-compiled optimized ML Pipeline
+```
 
 ---
 
-## 👥 Team Members
+## 🛠️ Installation & Setup
 
-- Rounak Kumar Saw  
-- Pranjal Tripathi
-- Priyanshu Verma 
+### 1. Requirements
+Ensure you have Python 3.9+ installed.
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/PropWise-AI.git
+cd PropWise-AI
+
+# Create a virtual environment
+python -m venv .venv
+source .venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+### 2. Environment Variables
+To enable the **AI Advisory** features, you must provide a free [Groq API Key](https://console.groq.com/keys). 
+Create a file strictly named `.env` in the root folder with the following contents:
+
+```env
+# Get your FREE Groq API key at: https://console.groq.com/keys
+GROQ_API_KEY=gsk_your_groq_api_key_here
+```
+
+### 3. Model Training (Optional but Recommended)
+The repository automatically attempts to retrain if a `model.pkl` mismatch is detected. To manually train the model on your environment's `scikit-learn` version:
+
+```bash
+python analyze_housing.py
+```
+*This will perform a grid search sweep and generate heavily tuned `model.pkl`, `metrics.json`, and `feature_importance.csv` artifacts.*
+
+### 4. Running the Dashboard
+Boot up the Streamlit interface:
+
+```bash
+streamlit run app.py
+```
+Once initialized, navigate to `http://localhost:8501` in your browser.
 
 ---
 
+## ⚠️ Disclaimer
+PropWise AI and its generated advisory reports utilize predictive logic and Generative AI. These outputs are created strictly for **indicative and demonstration purposes** and **do not constitute financial, legal, or investment advice**. Always consult a licensed local real estate professional for transactional decisions.
