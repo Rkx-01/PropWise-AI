@@ -196,7 +196,7 @@ def render_predict_price(pipeline, sidebar_file=None):
             input_df = engineer_features(pd.DataFrame([input_dict]))
             prediction = pipeline.predict(input_df)[0]
             
-            st.success(f"### Estimated Market Valuation: ${prediction:,.2f}")
+            st.success(f"### Estimated Market Valuation: ₹{prediction:,.2f}")
             st.markdown("---")
             st.info("This prediction is generated based on current model training on historical trends.")
 
@@ -215,7 +215,7 @@ def render_predict_price(pipeline, sidebar_file=None):
                 X_batch = engineer_features(df_input.copy())
                 results = df_input.copy()
                 results['Predicted Price'] = pipeline.predict(X_batch)
-                results['Formatted Price'] = results['Predicted Price'].apply(lambda x: f"${x:,.2f}")
+                results['Formatted Price'] = results['Predicted Price'].apply(lambda x: f"₹{x:,.2f}")
                 
                 st.subheader("✅ Processed Results")
                 st.dataframe(results, use_container_width=True)
@@ -471,9 +471,9 @@ def render_model_performance(metrics, df_imp):
         st.subheader("🎯 Key Performance Indicators")
         m_col1, m_col2, m_col3 = st.columns(3)
         with m_col1:
-            st.metric("Mean Absolute Error (MAE)", f"${metrics['MAE']:,.0f}")
+            st.metric("Mean Absolute Error (MAE)", f"₹{metrics['MAE']:,.0f}")
         with m_col2:
-            st.metric("Root Mean Squared Error (RMSE)", f"${metrics['RMSE']:,.0f}")
+            st.metric("Root Mean Squared Error (RMSE)", f"₹{metrics['RMSE']:,.0f}")
         with m_col3:
             st.metric("R2 Variance Score", f"{metrics['R2']:.4f}")
     else:
