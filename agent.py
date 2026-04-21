@@ -1,13 +1,3 @@
-"""
-agent.py — PropWise-AI  |  Milestone 2: Agentic Advisory Engine
-================================================================
-Uses Groq API to turn a predicted price + property details into a structured
-advisory report.
-
-Environment variable required:
-    GROQ_API_KEY
-"""
-
 import os
 import json
 import re
